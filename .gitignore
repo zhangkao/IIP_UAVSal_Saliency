@@ -1,0 +1,10 @@
+*/.idea
+*/.idea/*
+*/__pycache__
+
+*.pyc
+*.pth
+*.npy
+
+*/weights/*.pth
+*/Tools/*npy
