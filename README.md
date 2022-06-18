@@ -109,6 +109,8 @@ A video demo is provided for comparison with State-of-the-art methods, including
 * non-DL based models: GBVSm, AWSD.
 
 
+* The models fine-tuned on the corresponding dataset (UAV2 and AVS1K) are marked with *.
+* After fine-tuning, the performance of these models improved significantly.
 * The first four scenes are from the UAV2-TE dataset, the rest are from AVS1K-TE.
 
 ## Paper & Citation
