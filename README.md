@@ -102,6 +102,15 @@ The model is trained using Adam optimizer with lr=0.00001 and weight_decay=0.000
 
 Time cost: [PNGs](https://whueducn-my.sharepoint.com/:f:/g/personal/zhangkao_whu_edu_cn/Eka_swtqjChAh9JycJRD1PYBDR6HjFUqbXREOvGRuEDokw?e=FIjd6h) (repeat 4 times for test.)
 
+### Video Demo
+
+A video demo is provided for comparison with State-of-the-art methods, including: [OneDrive](https://whueducn-my.sharepoint.com/:v:/g/personal/zhangkao_whu_edu_cn/ESCIRe02WSZPmKGjVD08PBUB_ChN9c67gppIt5ZUZ3m8ZA?e=Fb0mS6) (712M)
+* DL based models: STRNN*, TwoS*, TASED*, UNISAL*
+* non-DL based models: GBVSm, AWSD.
+
+
+* The first four scenes are from the UAV2-TE dataset, the rest are from AVS1K-TE.
+
 ## Paper & Citation
 
 If you use the STRNN video saliency model, please cite the following paper: 
@@ -115,6 +124,8 @@ If you use the STRNN video saliency model, please cite the following paper:
   year={xxxx}
 }
 ```
+
+
 
 ## Contact
 Kao ZHANG  <br />
