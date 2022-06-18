@@ -98,7 +98,7 @@ The model is trained using Adam optimizer with lr=0.0001 and weight_decay=0.0000
 The model is trained using Adam optimizer with lr=0.00001 and weight_decay=0.000005 
 * **Version V2** : 
 [UAV2-TE](https://whueducn-my.sharepoint.com/:u:/g/personal/zhangkao_whu_edu_cn/EUuGfQaPiVFAi42YUnyzHzgBVyqhG2InQXKIyupJxUuEYw?e=wQodTB) (654M), 
-[AVS1K-TE]() (1.9G)
+[AVS1K-TE](https://whueducn-my.sharepoint.com/:u:/g/personal/zhangkao_whu_edu_cn/EUsv8PA3gqdHldJZKMrTCGQBoA9c2_J29ifDkdBh--W_3g?e=qFD1Qa) (1.9G)
 
 Time cost: [PNGs](https://whueducn-my.sharepoint.com/:f:/g/personal/zhangkao_whu_edu_cn/Eka_swtqjChAh9JycJRD1PYBDR6HjFUqbXREOvGRuEDokw?e=FIjd6h) (repeat 4 times for test.)
 
