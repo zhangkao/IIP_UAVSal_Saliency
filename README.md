@@ -39,21 +39,20 @@ You can try to create a new environment in anaconda, as follows
 Download the pre-trained models and put the pre-trained model into the "weights" file.
 
 * **UAVSal-UAV2** 
-coming soon
-
+[OneDrive](https://whueducn-my.sharepoint.com/:u:/g/personal/zhangkao_whu_edu_cn/ERHo7kkmKjlEmbw7p8zQ1BUBn54i6jn6dabTkzkwNO50FA?e=7PWhjB) (52M)
 * **UAVSal-AVS1K** 
-coming soon       
+[OneDrive](https://whueducn-my.sharepoint.com/:u:/g/personal/zhangkao_whu_edu_cn/ERJkGY-zClhBpEqgOixdTNcBhF6EYnJPGvKUlhcflxttcg?e=PaIycZ) (52M)
 
 ### Train and Test
 
 **The parameters**
 
-* Please change the working directory: "dataDir" to your path in the "Demo_Test.py" and "Demo_Train_DIEM.py" files, like:
+* Please change the working directory: "dataDir" to your path in the "Demo_Test.py" and "Demo_Train_Test.py" files, like:
 
-        dataDir = 'E:/DataSet'
+        dataDir = '/home/name/DataSet/'
         
 * More parameters are in the "train" and "test" functions.
-* Run the demo "Demo_Test.py" and "Demo_Train_DIEM.py" to test or train the model.
+* Run the demo "Demo_Test.py" and "Demo_Train_Test.py" to test or train the model.
 
 **The full training process:**
 
@@ -89,7 +88,7 @@ And it is easy to change the output format in our code.
 * You can evaluate the performance based on the "EvalScores Tools".
 
 
-**Results**: [ALL](https://whueducn-my.sharepoint.com/:f:/g/personal/zhangkao_whu_edu_cn/EucCA9ArT1NIqpEokhDjzSMBivD86OFdKrtuzUvHw9UIJA?e=J2ZdBh) (6.2G):
+**Results**: [ALL](https://whueducn-my.sharepoint.com/:f:/g/personal/zhangkao_whu_edu_cn/EucCA9ArT1NIqpEokhDjzSMBivD86OFdKrtuzUvHw9UIJA?e=R9ofo9) (5.1G):
 
 The model is trained using Adam optimizer with lr=0.0001 and weight_decay=0.00005    
 * **Version V1** : 
