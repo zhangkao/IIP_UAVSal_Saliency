@@ -371,7 +371,6 @@ class UAVSal(nn.Module):
 
         out = self.conv_out_st(x)
         out = torch.sigmoid(out)
-        out = F.relu(out)
 
         return out, x_state
 
