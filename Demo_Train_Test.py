@@ -50,7 +50,7 @@ def train(method_name='uavsal',
     #################################################################
     # Build the model
     #################################################################
-    print("Build SalCNN Model: " + method_name)
+    print("Build UAVSAL Model: " + method_name)
     model = UAVSal(cnn_type=cnn_type, time_dims=time_dims, num_stblock=num_stblock, bias_type=bias_type,
                    iosize=iosize, planes=256, pre_model_path=pre_model_path)
     model = model.to(device)
