@@ -86,6 +86,7 @@ And it is easy to change the output format in our code.
 * The results of video task is saved by ".mat"(uint8) formats.
 * You can get the color visualization results based on the "Visualization Tools".
 * You can evaluate the performance based on the "EvalScores Tools".
+* You can get the parameter size of each component based on the "Getmodelsize Tools".
 
 
 **Results**: [ALL](https://whueducn-my.sharepoint.com/:f:/g/personal/zhangkao_whu_edu_cn/EucCA9ArT1NIqpEokhDjzSMBivD86OFdKrtuzUvHw9UIJA?e=R9ofo9) (5.1G):
