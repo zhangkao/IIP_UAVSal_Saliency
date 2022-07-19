@@ -89,7 +89,7 @@ And it is easy to change the output format in our code.
 * You can get the parameter size of each component based on the "Getmodelsize Tools".
 
 
-**Results**: [ALL](https://whueducn-my.sharepoint.com/:f:/g/personal/zhangkao_whu_edu_cn/EucCA9ArT1NIqpEokhDjzSMBivD86OFdKrtuzUvHw9UIJA?e=R9ofo9) (5.1G):
+**Results**: [ALL](https://whueducn-my.sharepoint.com/:f:/g/personal/zhangkao_whu_edu_cn/EucCA9ArT1NIqpEokhDjzSMBivD86OFdKrtuzUvHw9UIJA?e=R9ofo9) (5.8G):
 
 The model is trained using Adam optimizer with lr=0.0001 and weight_decay=0.00005    
 * **Version V1** : 
@@ -101,8 +101,7 @@ The model is trained using Adam optimizer with lr=0.00001 and weight_decay=0.000
 [UAV2-TE](https://whueducn-my.sharepoint.com/:u:/g/personal/zhangkao_whu_edu_cn/EUuGfQaPiVFAi42YUnyzHzgBVyqhG2InQXKIyupJxUuEYw?e=wQodTB) (639M), 
 [AVS1K-TE](https://whueducn-my.sharepoint.com/:u:/g/personal/zhangkao_whu_edu_cn/EUsv8PA3gqdHldJZKMrTCGQBoA9c2_J29ifDkdBh--W_3g?e=qFD1Qa) (2.04G)
 
-it can achieve faster speed (85FPS) with
-similar performance by slightly reducing the input size of the UAVSal from original 360 x 640 pixels to 288 x 512 pixels
+It can achieve faster speed (85FPS) with similar performance by slightly reducing the input size from original 360 x 640 pixels to 288 x 512 pixels
 * **UAV2** : 
 [weigths](https://whueducn-my.sharepoint.com/:u:/g/personal/zhangkao_whu_edu_cn/EYU765b1XmxLrV2s7daghHwBF1US8eeCawWQJRgGONhKuQ?e=ix4cOa) (52M), 
 [results](https://whueducn-my.sharepoint.com/:u:/g/personal/zhangkao_whu_edu_cn/EWDU7TylkgVAnZcDNVctvsUBhKrxneMWOwqp7m_uFIU2-A?e=A8c1gM) (649M)
