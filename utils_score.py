@@ -269,7 +269,6 @@ def getSumFix_img(fixsDir, DataSet='SALICON', size=None):
 
 		ShufMap += fixpts
 
-	h5io.savemat('../Tools/Shuffle_' + DataSet + '.mat', {'ShufMap': ShufMap})
 	return ShufMap
 
 def getSumFix_vid(fixsDir, DataSet='DIEM20', size=None, maxframes = float('inf')):
@@ -306,7 +305,6 @@ def getSumFix_vid(fixsDir, DataSet='DIEM20', size=None, maxframes = float('inf')
 		ShufMap += np.sum(fixpts[:,:,0,:],axis=2)
 		ShufMap = np.round(ShufMap)
 
-	h5io.savemat('../Tools/Shuffle_' + DataSet + '.mat', {'ShufMap': ShufMap})
 	return ShufMap
 
 def getALLFix_img(fixsDir, DataSet='SALICON'):
@@ -329,8 +327,6 @@ def getALLFix_img(fixsDir, DataSet='SALICON'):
 
 		ALLFixPts.append(f_xy)
 
-	np.save('../Tools/ALLFixPts_' + DataSet + '.npy', ALLFixPts)
-	# np.save('../Tools/ALLFixMaps_' + DataSet + '.npy', ALLFixMaps)
 	return ALLFixPts#, ALLFixMaps
 
 def getALLFix_vid(fixsDir, DataSet='DIEM20', maxframes = float('inf')):
@@ -364,8 +360,6 @@ def getALLFix_vid(fixsDir, DataSet='DIEM20', maxframes = float('inf')):
 
 			ALLFixPts.append(f_xy)
 
-	np.save('../Tools/ALLFixPts_' + DataSet + '.npy', ALLFixPts)
-	# np.save('../Tools/ALLFixMaps_' + DataSet + '.npy', ALLFixMaps)
 	return ALLFixPts#, ALLFixMaps
 
 
@@ -426,9 +420,11 @@ def evalscores_vid_sum(RootDir, SalDir, DataSet, MethodNames, keys_order=keys_or
 
 	print('\nEvaluate Metrics: ' + str(keys_order))
 	if 'AUC_shuffled' in keys_order:
-		shuff_path = '../Tools/Shuffle_' + DataSet.upper() + '.mat'
+		shuff_path = RootDir + 'Shuffle_' + DataSet.upper() + '.mat'
+		# shuff_path = '../Tools/Shuffle_' + DataSet.upper() + '.mat'
 		if not os.path.exists(shuff_path):
 			shuffle_map = getSumFix_vid(fixsDir,DataSet)
+			h5io.savemat(shuff_path, {'ShufMap': shuffle_map})
 		else:
 			shuffle_map = h5io.loadmat(shuff_path)["ShufMap"]
 	else:
@@ -506,9 +502,11 @@ def evalscores_vid(RootDir, SalDir, DataSet, MethodNames, keys_order=keys_order)
 
 	print('\nEvaluate Metrics: ' + str(keys_order))
 	if 'AUC_shuffled' in keys_order:
-		ALLFixPts_path = '../Tools/ALLFixPts_' + DataSet.upper() + '.npy'
+		ALLFixPts_path = RootDir + 'ALLFixPts_' + DataSet.upper() + '.npy'
+		# ALLFixPts_path = '../Tools/ALLFixPts_' + DataSet.upper() + '.npy'
 		if not os.path.exists(ALLFixPts_path):
 			ALLFixPts = getALLFix_vid(fixsDir,DataSet)
+			np.save(ALLFixPts_path, ALLFixPts)
 		else:
 			ALLFixPts = np.load(ALLFixPts_path,allow_pickle=True)
 	else:
@@ -581,9 +579,11 @@ def evalscores_img_sum(DataDir, ResDir, DataSet, MethodNames, keys_order=keys_or
 
 	print('\nEvaluate Metrics: ' + str(keys_order))
 	if 'AUC_shuffled' in keys_order:
-		shuff_path = '../Tools/Shuffle_' + DataSet.upper() + '.mat'
+		shuff_path = DataDir + 'Shuffle_' + DataSet.upper() + '.mat'
+		# shuff_path = '../Tools/Shuffle_' + DataSet.upper() + '.mat'
 		if not os.path.exists(shuff_path):
 			shuffle_map = getSumFix_img(fixsDir,DataSet)
+			h5io.savemat(shuff_path, {'ShufMap': shuffle_map})
 		else:
 			shuffle_map = h5io.loadmat(shuff_path)["ShufMap"]
 	else:
@@ -638,9 +638,11 @@ def evalscores_img(DataDir, ResDir, DataSet, MethodNames, keys_order=keys_order)
 
 	print('\nEvaluate Metrics: ' + str(keys_order))
 	if 'AUC_shuffled' in keys_order:
-		ALLFixPts_path = '../Tools/ALLFixPts_' + DataSet.upper() + '.npy'
+		ALLFixPts_path = DataDir + 'ALLFixPts_' + DataSet.upper() + '.npy'
+		# ALLFixPts_path = '../Tools/ALLFixPts_' + DataSet.upper() + '.npy'
 		if not os.path.exists(ALLFixPts_path):
 			ALLFixPts = getALLFix_img(fixsDir,DataSet)
+			np.save(ALLFixPts_path, ALLFixPts)
 		else:
 			ALLFixPts = np.load(ALLFixPts_path,allow_pickle=True)
 	else:

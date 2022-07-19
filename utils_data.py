@@ -457,6 +457,11 @@ def get_guasspriors(b_s=2, shape_r=45, shape_c=80, channels = 8):
         h5io.savemat(priormat_path, {'PriorMaps': ims})
     else:
         ims = h5io.loadmat(priormat_path)["PriorMaps"]
+        if ims.shape[0] != shape_r or ims.shape[1] != shape_c:
+            ims_rs = np.zeros((shape_r, shape_c, ims.shape[2]), np.uint8)
+            for i in range(ims.shape[2]):
+                ims_rs[:, :, i] = padding(ims[:, :, i], shape_r, shape_c, 1)
+            ims = ims_rs
 
     ims = np.expand_dims(ims, axis=0)
     ims = np.repeat(ims, b_s, axis=0)
@@ -586,6 +591,12 @@ def read_ob_priors(datapath, DataSet='', phase_gen='train', shape_r=45, shape_c=
 def get_ob_priors(datapath, DataSet='', phase_gen='train', b_s=2, shape_r=45, shape_c=80, channels = 20):
 
     ims = read_ob_priors(datapath, DataSet, phase_gen, shape_r, shape_c)
+
+    if ims.shape[0] != shape_r or ims.shape[1] != shape_c:
+        ims_rs = np.zeros((shape_r, shape_c, ims.shape[2]), np.uint8)
+        for i in range(ims.shape[2]):
+            ims_rs[:,:,i] = padding(ims[:,:,i], shape_r, shape_c, 1)
+        ims = ims_rs
 
     ims = np.expand_dims(ims, axis=0)
     ims = np.repeat(ims, b_s, axis=0)

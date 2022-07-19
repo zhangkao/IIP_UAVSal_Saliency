@@ -30,23 +30,22 @@ def get_bias(bias_type=[1, 1, 1], batch_size=2, shape_r=45, shape_c=80):
 def test(input_path, output_path, model_path, method_name='UAVSal', saveFrames=float('inf'), time_dims=5, iosize=[480, 640, 60, 80],
          batch_size=4, bias_type=[1, 1, 1]):
 
-    # model = UAVSal(cnn_type='mobilenet_v2', time_dims=time_dims, num_stblock=2, bias_type=bias_type,
-    #                          iosize=iosize, planes=256, pre_model_path='')
-    # model = model.to(device)
-    #
-    # if os.path.exists(model_path):
-    #     print("Load UAVSal weights")
-    #     model.load_state_dict(torch.load(model_path).state_dict())
-    # else:
-    #     raise ValueError
+    model = UAVSal(cnn_type='mobilenet_v2', time_dims=time_dims, num_stblock=2, bias_type=bias_type,
+                             iosize=iosize, planes=256, pre_model_path='')
+    model = model.to(device)
 
     if os.path.exists(model_path):
         print("Load UAVSal weights")
-        model = torch.load(model_path)
+        model.load_state_dict(torch.load(model_path).state_dict())
     else:
         raise ValueError
 
-    model = model.to(device)
+    # if os.path.exists(model_path):
+    #     print("Load UAVSal weights")
+    #     model = torch.load(model_path)
+    #     model = model.to(device)
+    # else:
+    #     raise ValueError
 
     output_path = output_path + method_name + '/'
     if not os.path.exists(output_path):
@@ -81,7 +80,6 @@ def test(input_path, output_path, model_path, method_name='UAVSal', saveFrames=f
             count_input = batch_size * time_dims
             bs_steps = math.ceil(count_bs / batch_size)
             x_state = None
-            time_sum = 0
             for idx_bs in range(bs_steps):
                 x_imgs = vidimgs[idx_bs * count_input:(idx_bs + 1) * count_input]
                 x_imgs = torch.tensor(norm_data(x_imgs)).float()
@@ -91,20 +89,13 @@ def test(input_path, output_path, model_path, method_name='UAVSal', saveFrames=f
                 else:
                     x_cb_input = x_cb
 
-                time_start = time.time()
                 bs_out, out_state = model(x_imgs.to(device), x_cb_input, x_state)
-                time_end = time.time()
-                time_sum = time_sum + time_end - time_start
-
                 x_state = [out_state[0].detach()]
                 bs_out = bs_out.data.cpu().numpy()
 
                 for idx_pre in range(bs_out.shape[0]):
                     isalmap = postprocess_predictions(bs_out[idx_pre, 0, :, :], height, width)
                     pred_mat[idx_bs * count_input + idx_pre, :, :, 0] = np2mat(isalmap)
-
-            print('time cost: ', time_sum, 's')
-            print('frames: ',str(nframes))
 
             iSaveFrame = min(isaveframes, saveFrames)
             pred_mat = pred_mat[0:iSaveFrame, :, :, :].transpose((1, 2, 3, 0))
@@ -115,7 +106,7 @@ def test(input_path, output_path, model_path, method_name='UAVSal', saveFrames=f
 if __name__ == '__main__':
 
     DataSet_Test = 'UAV2-TE'
-    model_path = './weights/uavsal-mobilenet_v2-uav2-v2.pth'
+    model_path = './weights/uavsal-mobilenet_v2-uav2-v2-288-512.pth'
     ext = '.avi'
 
     # DataSet_Test = 'AVS1K-TE'
@@ -124,21 +115,21 @@ if __name__ == '__main__':
 
     method_name = 'UAVSal'
     batch_size = 4
-
+    iosize = [360, 640, 45, 80]
 
     if os.name == 'nt':
-        dataDir = 'E:/DataSet/'
+        dataDir = 'D:/DataSet/'
     else:
         dataDir = '/home/kao/D/DataSet/'
     test_dataDir = dataDir + '/' + DataSet_Test + '/'
     test_input_path = test_dataDir + 'Videos/'
-    test_result_path = test_dataDir + 'Results/Results_UAVSal/'
+    test_result_path = test_dataDir + 'Results/'
     test_output_path = test_result_path + 'Saliency/'
 
     DataSet_Train = DataSet_Test[:-3]
 
     test(test_input_path, test_output_path, model_path, method_name=method_name, saveFrames=float('inf'),
-         iosize=[360, 640, 45, 80], batch_size=batch_size, time_dims=5, bias_type=[1, 1, 1])
+         iosize=iosize, batch_size=batch_size, time_dims=5, bias_type=[1, 1, 1])
 
     evalscores_vid_torch(test_dataDir, test_result_path, DataSet=DataSet_Test, MethodNames=[method_name], batch_size=32)
 
