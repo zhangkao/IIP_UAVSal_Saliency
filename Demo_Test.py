@@ -116,7 +116,7 @@ if __name__ == '__main__':
         dataDir = '/home/kao/D/DataSet/'
     test_dataDir = dataDir + '/' + DataSet_Test + '/'
     test_input_path = test_dataDir + 'Videos/'
-    test_result_path = test_dataDir + 'Results/'
+    test_result_path = test_dataDir + 'Results/Results_UAVSal/'
     test_output_path = test_result_path + 'Saliency/'
 
     DataSet_Train = DataSet_Test[:-3]

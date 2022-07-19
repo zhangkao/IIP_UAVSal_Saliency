@@ -218,7 +218,6 @@ def test(input_path, output_path, method_name,
             count_input = batch_size * time_dims
             bs_steps = math.ceil(count_bs / batch_size)
             x_state = None
-            time_sum = 0
             for idx_bs in range(bs_steps):
                 x_imgs = vidimgs[idx_bs * count_input:(idx_bs + 1) * count_input]
                 x_imgs = torch.tensor(norm_data(x_imgs)).float()
@@ -228,20 +227,13 @@ def test(input_path, output_path, method_name,
                 else:
                     x_cb_input = x_cb
 
-                time_start = time.time()
                 bs_out, out_state = model(x_imgs.to(device), x_cb_input, x_state)
-                time_end = time.time()
-                time_sum = time_sum + time_end - time_start
-
                 x_state = [out_state[0].detach()]
                 bs_out = bs_out.data.cpu().numpy()
 
                 for idx_pre in range(bs_out.shape[0]):
                     isalmap = postprocess_predictions(bs_out[idx_pre, 0, :, :], height, width)
                     pred_mat[idx_bs * count_input + idx_pre, :, :, 0] = np2mat(isalmap)
-
-            print('time cost: ', time_sum, 's')
-            print('frames: ',str(nframes))
 
             iSaveFrame = min(isaveframes, saveFrames)
             pred_mat = pred_mat[0:iSaveFrame, :, :, :].transpose((1, 2, 3, 0))
@@ -265,7 +257,7 @@ saveFrames = float('inf')
 ################################################################
 # replace the datadir to your path
 if os.name == 'nt':
-    dataDir = 'E:/DataSet/'
+    dataDir = 'D:/DataSet/'
 else:
     dataDir = '/home/kao/D/DataSet/'
 
@@ -297,11 +289,12 @@ if __name__ == '__main__':
     time_dims = 5
     num_stblock = 2
     bias_type = [1, 1, 1]
+    iosize = [360, 640, 45, 80]
 
     train(cnn_type='mobilenet_v2', time_dims=time_dims, num_stblock=num_stblock, bias_type=bias_type,
-          iosize=[360, 640, 45, 80], batch_size=batch_size, epochs=epochs, pre_model_path=pre_model_path)
+          iosize=iosize, batch_size=batch_size, epochs=epochs, pre_model_path=pre_model_path)
 
-    test(test_input_path, test_output_path, method_name=method_name, saveFrames=saveFrames, iosize=[360, 640, 45, 80],
+    test(test_input_path, test_output_path, method_name=method_name, saveFrames=saveFrames, iosize=iosize,
          batch_size=batch_size, time_dims=time_dims, bias_type=bias_type)
 
     evalscores_vid_torch(test_dataDir, test_result_path, DataSet=DataSet_Test, MethodNames=[method_name], batch_size=32)
