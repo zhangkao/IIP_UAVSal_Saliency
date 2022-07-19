@@ -106,7 +106,7 @@ def test(input_path, output_path, model_path, method_name='UAVSal', saveFrames=f
 if __name__ == '__main__':
 
     DataSet_Test = 'UAV2-TE'
-    model_path = './weights/uavsal-mobilenet_v2-uav2-v2-288-512.pth'
+    model_path = './weights/uavsal-mobilenet_v2-uav2.pth'
     ext = '.avi'
 
     # DataSet_Test = 'AVS1K-TE'
