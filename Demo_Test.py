@@ -40,13 +40,6 @@ def test(input_path, output_path, model_path, method_name='UAVSal', saveFrames=f
     else:
         raise ValueError
 
-    # if os.path.exists(model_path):
-    #     print("Load UAVSal weights")
-    #     model = torch.load(model_path)
-    #     model = model.to(device)
-    # else:
-    #     raise ValueError
-
     output_path = output_path + method_name + '/'
     if not os.path.exists(output_path):
         os.makedirs(output_path)
