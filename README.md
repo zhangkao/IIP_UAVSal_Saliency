@@ -98,14 +98,19 @@ The model is trained using Adam optimizer with lr=0.0001 and weight_decay=0.0000
 
 The model is trained using Adam optimizer with lr=0.00001 and weight_decay=0.000005 
 * **Version V2** : 
-[UAV2-TE](https://whueducn-my.sharepoint.com/:u:/g/personal/zhangkao_whu_edu_cn/EUuGfQaPiVFAi42YUnyzHzgBVyqhG2InQXKIyupJxUuEYw?e=wQodTB) (654M), 
-[AVS1K-TE](https://whueducn-my.sharepoint.com/:u:/g/personal/zhangkao_whu_edu_cn/EUsv8PA3gqdHldJZKMrTCGQBoA9c2_J29ifDkdBh--W_3g?e=qFD1Qa) (1.9G)
+[UAV2-TE](https://whueducn-my.sharepoint.com/:u:/g/personal/zhangkao_whu_edu_cn/EUuGfQaPiVFAi42YUnyzHzgBVyqhG2InQXKIyupJxUuEYw?e=wQodTB) (639M), 
+[AVS1K-TE](https://whueducn-my.sharepoint.com/:u:/g/personal/zhangkao_whu_edu_cn/EUsv8PA3gqdHldJZKMrTCGQBoA9c2_J29ifDkdBh--W_3g?e=qFD1Qa) (2.04G)
 
+it can achieve faster speed (85FPS) with
+similar performance by slightly reducing the input size of the UAVSal from original 360 x 640 pixels to 288 x 512 pixels
+* **UAV2** : 
+[weigths](https://whueducn-my.sharepoint.com/:u:/g/personal/zhangkao_whu_edu_cn/EYU765b1XmxLrV2s7daghHwBF1US8eeCawWQJRgGONhKuQ?e=ix4cOa) (52M), 
+[results](https://whueducn-my.sharepoint.com/:u:/g/personal/zhangkao_whu_edu_cn/EWDU7TylkgVAnZcDNVctvsUBhKrxneMWOwqp7m_uFIU2-A?e=A8c1gM) (649M)
 
 
 ### Video Demo
 
-A video demo is provided for comparison with State-of-the-art methods, including: [OneDrive](https://whueducn-my.sharepoint.com/:v:/g/personal/zhangkao_whu_edu_cn/ESCIRe02WSZPmKGjVD08PBUB_ChN9c67gppIt5ZUZ3m8ZA?e=Fb0mS6) (712M)
+A video demo is provided for comparison with State-of-the-art methods, including: [OneDrive](https://whueducn-my.sharepoint.com/:v:/g/personal/zhangkao_whu_edu_cn/ESCIRe02WSZPmKGjVD08PBUB_ChN9c67gppIt5ZUZ3m8ZA?e=Fb0mS6) (596M)
 * DL based models: STRNN*, TwoS*, TASED*, UNISAL*
 * non-DL based models: GBVSm, AWSD.
 
