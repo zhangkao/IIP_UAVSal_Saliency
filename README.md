@@ -120,7 +120,7 @@ A video demo is provided for comparison with State-of-the-art methods, including
 
 ## Paper & Citation
 
-If you use the STRNN video saliency model, please cite the following paper: 
+If you use the UAVSal video saliency model, please cite the following paper: 
 ```
 @article{zhang2021an,
   title={An Efficient Saliency Prediction Model for Unmanned Aerial Vehicle Video},
