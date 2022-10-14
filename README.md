@@ -124,11 +124,11 @@ If you use the STRNN video saliency model, please cite the following paper:
 ```
 @article{zhang2021an,
   title={An Efficient Saliency Prediction Model for Unmanned Aerial Vehicle Video},
-  author={Zhang, Kao and Chen, Zhenzhong and Li, Songnan},
-  journal={xxxx},
+  author={Zhang, Kao and Chen, Zhenzhong and Li, Songnan and Liu, shan},
+  journal={ISPRS Journal of Photogrammetry and Remote Sensing},
   volume={xxxx},
   pages={xxxx},
-  year={xxxx}
+  year={2022}
 }
 ```
 
