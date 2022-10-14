@@ -122,7 +122,7 @@ A video demo is provided for comparison with State-of-the-art methods, including
 
 If you use the UAVSal video saliency model, please cite the following paper: 
 ```
-@article{zhang2021an,
+@article{zhang2022an,
   title={An Efficient Saliency Prediction Model for Unmanned Aerial Vehicle Video},
   author={Zhang, Kao and Chen, Zhenzhong and Li, Songnan and Liu, shan},
   journal={ISPRS Journal of Photogrammetry and Remote Sensing},
